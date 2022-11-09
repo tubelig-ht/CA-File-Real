@@ -8,7 +8,6 @@ import javax.persistence.Id;
 @Entity
 public class Tourist {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 	private String firstName;
 	private String lastName;
@@ -57,6 +56,25 @@ public class Tourist {
 	}
 	public void setNumberOfDays(int numberOfDays) {
 		this.numberOfDays = numberOfDays;
+	}
+	public Tourist(int id, String firstName, String lastName, String gender, int age, String fromPlace,
+			int numberOfDays) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.gender = gender;
+		this.age = age;
+		this.fromPlace = fromPlace;
+		this.numberOfDays = numberOfDays;
+	}
+	public Tourist() {
+		super();
+	}
+	@Override
+	public String toString() {
+		return "Tourist [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", gender=" + gender
+				+ ", age=" + age + ", fromPlace=" + fromPlace + ", numberOfDays=" + numberOfDays + "]";
 	}
 	
 	

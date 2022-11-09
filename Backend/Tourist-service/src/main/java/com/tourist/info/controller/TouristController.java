@@ -24,6 +24,11 @@ public class TouristController {
 	@Autowired
 	TouristService touristService;
 	
+	@GetMapping("/prevId")
+	public int getCount() {
+		return touristService.getCount();
+	}
+	
 	@GetMapping("/")
 	public ResponseEntity<List<Tourist>> getAllTourists(){
 		List<Tourist>touristList= touristService.getAllTourists();
@@ -37,7 +42,7 @@ public class TouristController {
 	}
 	
 	@PostMapping("/")
-	public ResponseEntity<?> addTourist(@RequestBody Tourist tourist) {
+	public ResponseEntity<Tourist> addTourist(@RequestBody Tourist tourist) {
 		touristService.addTourist(tourist);
 		System.out.println("Adding working");
 		return new ResponseEntity<>(HttpStatus.CREATED);

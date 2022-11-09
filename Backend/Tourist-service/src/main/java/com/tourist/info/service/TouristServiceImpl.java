@@ -17,6 +17,10 @@ public class TouristServiceImpl implements TouristService{
 	public List<Tourist> getAllTourists() {
 		return touristRepository.findByOrderByFirstNameDesc();
 	}
+	
+	public int getCount() {
+		return (int)touristRepository.count();
+	}
 
 	@Override
 	public Tourist getTouristById(int id) {
@@ -24,11 +28,10 @@ public class TouristServiceImpl implements TouristService{
 	}
 
 	@Override
-	public void addTourist(Tourist tourist) {
+	public Tourist addTourist(Tourist tourist) {
 		touristRepository.save(tourist);
-		
+		return tourist;
 	}
-
 	@Override
 	public void updateTourist(int id, Tourist tourist) {
 		Tourist t=touristRepository.findById(id);

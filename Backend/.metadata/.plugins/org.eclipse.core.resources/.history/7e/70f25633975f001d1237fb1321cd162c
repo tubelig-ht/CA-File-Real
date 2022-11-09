@@ -1,0 +1,32 @@
+package com.tourist.info;
+
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.tourist.info.controller.TouristController;
+import com.tourist.info.model.Tourist;
+import com.tourist.info.repository.TouristRepository;
+import com.tourist.info.service.TouristService;
+
+@SpringBootTest
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(TouristController.class)
+class TouristServiceApplicationTests {
+	
+	private TouristService mockUserService;
+	private TouristController userController;
+	
+	@Test
+	public void getAllTouristTest() {
+		mockUserService=PowerMockito.mock(TouristService.class);
+		Tourist tourist=new Tourist(101,"demo","demo","Male",20,"Delhi",5);
+		mockUserService.addTourist(new Tourist());
+		
+	}
+	
+
+}

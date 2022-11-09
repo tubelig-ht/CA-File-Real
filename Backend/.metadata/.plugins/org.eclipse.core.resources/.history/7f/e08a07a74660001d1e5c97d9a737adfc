@@ -1,0 +1,13 @@
+package com.tourist.info;
+
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.tourist.info.controller.TouristController;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@WebMvcTest(value=TouristController.class)
+public class ServiceMockitoTest {
+
+}

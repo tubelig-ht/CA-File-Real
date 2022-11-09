@@ -1,0 +1,39 @@
+package com.tourist.info;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
+import com.tourist.info.controller.TouristController;
+import com.tourist.info.model.Tourist;
+import com.tourist.info.repository.TouristRepository;
+import com.tourist.info.service.TouristService;
+
+@SpringBootTest
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(TouristController.class)
+class TouristServiceApplicationTests {
+	
+	@MockBean
+	private TouristService mockUserService;
+	
+	@Test
+	public void getAllTouristTest() {
+		mockUserService=PowerMockito.mock(TouristService.class);
+		List<Tourist> list=List.of(new Tourist(101,"demo","demo","Male",20,"Delhi",5)
+				,new Tourist(102,"demo2","demo2","Female",20,"Banglore",2)); 
+		PowerMockito.when(mockUserService.getAllTourists()).thenReturn(list);
+		
+		assertEquals(2,mockUserService.getAllTourists().size());
+		
+	}
+	
+
+}
